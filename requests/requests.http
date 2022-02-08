@@ -1,0 +1,22 @@
+### Songs
+Get http://localhost:3000/songs
+###
+Get http://localhost:3000/songs/2
+###
+Get http://localhost:3000/songs/9999
+
+### Artists
+Get http://localhost:3000/artists
+###
+Get http://localhost:3000/artists/1
+
+
+# Pour executer les requêtes ci-dessus dans Vscode, installer l'extention suivante: 
+# Name: REST Client
+# Id: humao.rest-client
+# Description: REST Client for Visual Studio Code
+# Publisher: Huachao Mao
+# VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+###
+Get https://swapi.dev/api/people/1

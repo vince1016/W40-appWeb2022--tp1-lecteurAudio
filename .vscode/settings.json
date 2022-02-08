@@ -1,0 +1,12 @@
+{
+  "jestrunner.jestPath": "node_modules/jest/bin/jest.js",
+  "editor.defaultFormatter": "numso.prettier-standard-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "numso.prettier-standard-vscode"
+  },
+  "editor.formatOnSave": true,
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "jest.jestCommandLine": "npm run test --"
+}
