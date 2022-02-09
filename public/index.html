@@ -19,11 +19,17 @@
     />
 
     <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    />
+
+    <link
       href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/css/main.css" />
 
-    <title>Exemples</title>
+    <title>Lecteur de musique ##nom du lecteur</title>
   </head>
 
   <body>
@@ -32,22 +38,96 @@
     </header>
     <main>
       <div id="component-songPlayer">
-        <p>Code du lecteur</p>
+        <div class="container-fluid p-5">
+          <div class="row">
+            <div class="col">
+              <div
+                id="songPlayer"
+                class="container p-3 bg-white shadow border border-5 border-primary"
+              >
+                <div class="row p-2">
+                  <p
+                    id="songName"
+                    class="songInfos text-white p-2 border border-3 border-dark"
+                  >
+                    Titre de la chanson
+                  </p>
+                  <p
+                    id="fileName"
+                    class="songInfos text-white p-2 border border-3 border-dark"
+                  >
+                    Nom du fichier
+                  </p>
+                  <p
+                    id="artistName"
+                    class="songInfos text-white p-2 border border-3 border-dark"
+                  >
+                    Nom de l'artiste
+                  </p>
+                </div>
+                <div class="row p-2">
+                  <div class="col-6">
+                    <button id="btnPlay" type="button" class="btn btn-primary">
+                      <i class="bi bi-play-fill"></i> Jouer
+                    </button>
+                    <button
+                      id="btnPause"
+                      type="button"
+                      class="btn btn-primary d-none"
+                    >
+                      <i class="bi bi-pause-fill"></i> Pause
+                    </button>
+                    <button id="btnStop" type="button" class="btn btn-primary">
+                      <i class="bi bi-stop-fill"></i> Stop
+                    </button>
+                  </div>
+                  <div class="col-3  text-white ">
+                    <p class="p-2 bg-dark text-center">
+                      Temps courant: <span id="currentTime">00:00</span>
+                    </p>
+                  </div>
+                  <div class="col-3 text-white text-center">
+                    <p class="p-2 bg-dark text-center">
+                      Durée: <span id="duration">00:00</span>
+                    </p>
+                  </div>
+                </div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div id="component-songInfos">
-        <h2>Informations de la chanson</h2>
-        <p id="desc">desc de la chanson</p>
-        <p id="desc">desc de l'artiste</p>
+        <div
+          class="container p-3 bg-white shadow border border-5 border-primary"
+        >
+          <div class="row">
+            <div class="col">
+              <h2>Informations de la chanson</h2>
+              <p id="songDesc">Desc de la chanson</p>
+              <p id="artistDesc">Desc de l'artiste</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div id="component-songsList">
-        <h2>Liste de chansons</h2>
-        <img
-          id="loading-component-songsList"
-          src="./images/loading-waiting.gif"
-          alt="Chargement..."
-          width="20"
-        />
-        <ul id="songsList"></ul>
+        <div
+          class="container p-3 bg-white shadow border border-5 border-primary"
+        >
+          <div class="row">
+            <div class="col">
+              <h2>Liste de chansons</h2>
+              <img
+                id="loading-component-songsList"
+                src="./images/loading-waiting.gif"
+                alt="Chargement..."
+                width="20"
+              />
+              <ul id="songsList"></ul>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <footer class="container-fluid bg-primary text-light p-4">
