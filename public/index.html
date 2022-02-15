@@ -39,7 +39,7 @@
         <div
           class="container p-3 bg-white shadow border border-5 border-primary"
         >
-          <div class="row p-2">
+          <div id="component-songPlayerDatas" class="row p-2">
             <p
               id="songName"
               class="songInfos text-white p-2 border border-3 border-dark"
@@ -54,7 +54,7 @@
             </p>
           </div>
           <div class="row p-2">
-            <div class="col-6">
+            <div id="component-songPlayerControls" class="col-6">
               <button id="btnPlay" type="button" class="btn btn-primary">
                 <i class="bi bi-play-fill"></i> Jouer
               </button>
@@ -69,13 +69,9 @@
                 <i class="bi bi-stop-fill"></i> Stop
               </button>
             </div>
-            <div class="col-3  text-white ">
+            <div id="component-songPlayerTime" class="col-3  text-white ">
               <p class="p-2 bg-dark text-center">
-                Temps courant: <span id="currentTime">00:00</span>
-              </p>
-            </div>
-            <div class="col-3 text-white text-center">
-              <p class="p-2 bg-dark text-center">
+                Temps courant: <span id="currentTime">00:00</span><br />
                 Durée: <span id="duration">00:00</span>
               </p>
             </div>
