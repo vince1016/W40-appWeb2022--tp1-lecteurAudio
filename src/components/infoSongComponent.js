@@ -28,7 +28,7 @@ export default class InfoSongComponent{
         this.loadSongInPlayerTrigger()
     }
 
-    loadSongInPlayer(){
+    loadSongInPlayerTrigger(){
         document.body.dispatchEvent(
             new CustomEvent('loadSongEvent', {
             detail: {
