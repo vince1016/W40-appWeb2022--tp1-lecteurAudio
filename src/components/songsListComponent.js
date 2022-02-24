@@ -4,6 +4,7 @@ import toastr from 'toastr'
 export default class SongsListComponent{
     constructor () {
         this.songsListEL = document.getElementById('songsList')
+        this.loadingEL = document.getElementById('loading-component-songs')
         this.songs = []
     }
 
@@ -23,12 +24,14 @@ export default class SongsListComponent{
     }
 
     renderDOM(){
+        this.loadingEL.style.visibility = 'visible'
         this.songs.forEach(song => {
             const songLIAdd = document.createElement('li')
             songLIAdd.innerHTML = song.fileName
             songLIAdd.setAttribute('data-song-id', song.id)
             this.songsListEL.appendChild(songLIAdd)
         })
+        this.loadingEL.style.visibility = 'hidden'
     }
 
     displayError(){
