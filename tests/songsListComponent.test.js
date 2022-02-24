@@ -51,7 +51,7 @@ test("loading is not visible after dom render", async ()=>{
     expect(expectedVisibility).toEqual(document.getElementById('loading-component-songs').style.visibility)
 })
 
-test("error when songs fetsch dont work", async ()=>{
+test("error when songs fetch dont work", async ()=>{
     
     //arrenge
     mockAxios.get.mockRejectedValue({data:songs})
