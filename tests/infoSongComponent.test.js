@@ -13,10 +13,12 @@ jest.mock('toastr')
 //const {data: songs} = songsJsonFake
 
 beforeEach(()=>{
-    // jest.clearAllMocks()
-    // document.body.innerHTML=`
-    //     <ul id="songsList"></ul>
-    // `
+    jest.clearAllMocks()
+    document.body.innerHTML=`
+    <h2>Informations de la chanson</h2>
+    <p id="songDesc"></p>
+    <p id="artistDesc"></p>
+    `
 })
 
 test("test name to be", async ()=>{

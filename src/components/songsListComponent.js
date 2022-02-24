@@ -4,8 +4,22 @@ import toastr from 'toastr'
 export default class SongsListComponent{
     constructor () {
         this.songsListEL = document.getElementById('songsList')
+        this.songsButtonEL 
         this.loadingEL = document.getElementById('loading-component-songs')
         this.songs = []
+        this.selected
+    }
+
+    select(id){
+        this.selected = this.songs[id-1]
+        document.body.dispatchEvent(
+            new CustomEvent('selectSongEvent', {
+            detail: {
+                artistId: this.selected.artistId,
+                songId: this.selected.id
+            }
+          })
+        )
     }
 
     async initialize(){
@@ -27,8 +41,11 @@ export default class SongsListComponent{
         this.loadingEL.style.visibility = 'visible'
         this.songs.forEach(song => {
             const songLIAdd = document.createElement('li')
-            songLIAdd.innerHTML = song.fileName
-            songLIAdd.setAttribute('data-song-id', song.id)
+            const songAAdd = document.createElement('button')
+            songAAdd.innerHTML = song.fileName
+            songAAdd.setAttribute('data-song-id', song.id)
+            songAAdd.addEventListener('click', event => this.select(parseInt(song.id)))
+            songLIAdd.appendChild(songAAdd)
             this.songsListEL.appendChild(songLIAdd)
         })
         this.loadingEL.style.visibility = 'hidden'

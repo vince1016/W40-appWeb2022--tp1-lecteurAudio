@@ -4,7 +4,6 @@ import mockAxios from 'axios'
 import mockToastr from 'toastr'
 import SongsListComponent from '../src/components/songsListComponent'
 import { songsJsonFake } from './data/songs'
-import { async } from 'regenerator-runtime'
 
 jest.mock('axios')
 jest.mock('toastr')
