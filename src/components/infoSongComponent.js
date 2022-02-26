@@ -11,15 +11,16 @@ export default class InfoSongComponent{
     }
 
     async initialize(){
-        document.body.addEventListener('selectSongEvent', event =>
+        document.body.addEventListener('selectSongEvent', event => 
         this.select(event.detail.artistId, event.detail.songId)
         )
-        await this.fetchArtist()
+        await this.fetchArtists()
     }
 
     async select(idArt, idSong){
         for (let i = 0; i < this.artists.length; i++) {
             if (parseInt(this.artists[i].id) == parseInt(idArt)) {
+                console.log("selected artist!",{idArt:idArt})
                 this.artist = this.artists[i];
                 await this.selectSong(idSong)
             }
@@ -43,13 +44,14 @@ export default class InfoSongComponent{
         try{
             const { data } = await axios.get('http://localhost:3000/songs/' + idSong)
             this.song = data
+            console.log("selected song! id=", idSong)
         } catch(error){
             this.displayError()
             console.log("*&error in song info comp -- song setting" + error)
         }
     }
 
-    async fetchArtist(){
+    async fetchArtists(){
         try{
             const { data } = await axios.get('http://localhost:3000/artists')
             this.artists = data
