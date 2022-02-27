@@ -8,10 +8,10 @@ export default class PlayerComponent{
         this.playButtonEL = document.getElementById('btnPlay')
         this.pauseButtonEL = document.getElementById('btnPause')
         this.stopButtonEL = document.getElementById('btnStop')
+        this.currentTimeEL = document.getElementById('currentTime')
+        this.totalTimeEL = document.getElementById('duration')
         this.artist = Object
         this.song = Object
-        this.currentTime = 0
-        this.totalTime = 0
         this.isPlaying = false
     }
 
@@ -34,33 +34,55 @@ export default class PlayerComponent{
             this.isPlaying = false
             this.resetTimer()
         })
+        this.playButtonEL.style.visibility = 'visible'
+        this.pauseButtonEL.style.visibility = 'hidden'
     }
 
     manageCurrentTime(isPlaying){
-        
+        if(this.song != Object){
+            if(isPlaying){
+                this.playButtonEL.classList.add('d-none')
+                this.playButtonEL.style.visibility = 'hidden'
+                this.pauseButtonEL.classList.remove('d-none')
+                this.pauseButtonEL.style.visibility = 'visible'
+                //start current
+            }
+            else{
+                this.playButtonEL.classList.remove('d-none')
+                this.playButtonEL.style.visibility = 'visible'
+                this.pauseButtonEL.classList.add('d-none')
+                this.pauseButtonEL.style.visibility = 'hidden'
+                //pause current
+            }
+        }
         //this.renderDOM()
     }
 
     resetTimer(){
-        this.currentTime = 0
-        this.renderDOM()
+        if(this.song != Object){
+            //besoin de coriger le style
+            this.currentTime = 0
+            this.playButtonEL.classList.remove('d-none')
+            this.playButtonEL.style.visibility = 'visible'
+            this.pauseButtonEL.classList.add('d-none')
+            this.pauseButtonEL.style.visibility = 'hidden'
+            
+            this.renderDOM()
+        }
     }
 
     renderDOM(){
-       // this.loadingEL.style.visibility = 'visible'
        this.artistNameEL.textContent = this.artist.name 
-       this.songNameEL.textContent = this.song.songName 
-
-        //this.loadingEL.style.visibility = 'hidden'
+       this.songNameEL.textContent = this.song.songName
     }
 
-    displayError(){
-        toastr.options = {
-            closeButton: true,
-            timeOut: '0'
-        }
-        toastr.error(
-            "une erreur empeche le bon fonctionement de la page (player), voir avec l'administrateur."
-        )
-    }
+    // displayError(){
+    //     toastr.options = {
+    //         closeButton: true,
+    //         timeOut: '0'
+    //     }
+    //     toastr.error(
+    //         "une erreur empeche le bon fonctionement de la page (player), voir avec l'administrateur."
+    //     )
+    // }
 }
