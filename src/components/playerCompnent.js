@@ -38,7 +38,7 @@ export default class PlayerComponent{
 
     manageCurrentTime(isPlaying){
         
-        this.renderDOM()
+        //this.renderDOM()
     }
 
     resetTimer(){
