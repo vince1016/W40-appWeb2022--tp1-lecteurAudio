@@ -19,6 +19,7 @@ export default class PlayerComponent{
         document.body.addEventListener('loadSongEvent', event =>{
             this.artist = event.detail.artist
             this.song = event.detail.song
+            //set tot time
         })
         this.playButtonEL.addEventListener('click', event=>{
             this.isPlaying = true
@@ -37,6 +38,7 @@ export default class PlayerComponent{
 
     manageCurrentTime(isPlaying){
         
+        this.renderDOM()
     }
 
     resetTimer(){
