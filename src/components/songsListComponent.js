@@ -31,7 +31,7 @@ export default class SongsListComponent{
         try{
             const { data } = await axios.get('http://localhost:3000/songs')
             this.songs = data
-        } catch(error){
+        } catch(error){ 
             this.displayError()
             console.log("*&error in song list comp" + error)
         }

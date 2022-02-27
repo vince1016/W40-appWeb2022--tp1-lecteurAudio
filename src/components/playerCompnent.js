@@ -19,22 +19,29 @@ export default class PlayerComponent{
         document.body.addEventListener('loadSongEvent', event =>{
             this.artist = event.detail.artist
             this.song = event.detail.song
-            await this.setSongToPlay()
         })
-        //await..
+        this.playButtonEL.addEventListener('click', event=>{
+            this.isPlaying = true
+            this.manageCurrentTime(this.isPlaying)
+        })
+        this.pauseButtonEL.addEventListener('click', event=>{
+            this.isPlaying = false
+            this.manageCurrentTime(this.isPlaying)
+        })
+        this.stopButtonEL.addEventListener('click', event=>{
+            this.isPlaying = false
+            this.resetTimer()
+        })
         this.renderDOM()
     }
 
-    async setSongToPlay(){
-        // try{
-        //     const { songData } = await axios.get('http://localhost:3000/songs/' + this.songId)
-        //     this.song = songData
-        //     const { artistData } = await axios.get('http://localhost:3000/artists/' + this.artistId)
-        //     this.artist = artistData
-        // } catch(error){
-        //     this.displayError()
-        //     console.log("*&error in player comp" + error)
-        // }
+    manageCurrentTime(isPlaying){
+        
+    }
+
+    resetTimer(){
+        this.currentTime = 0
+        this.renderDOM()
     }
 
     renderDOM(){
