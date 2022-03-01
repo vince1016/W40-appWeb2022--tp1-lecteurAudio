@@ -28,6 +28,7 @@ export default class PlayerComponent{
         this.playButtonEL.addEventListener('click', event=>{
             this.isPlaying = true
             this.manageCurrentTime(this.isPlaying)
+            //event to block se;ection of song when playing
         })
         this.pauseButtonEL.addEventListener('click', event=>{
             this.isPlaying = false
@@ -65,7 +66,7 @@ export default class PlayerComponent{
         if(this.song != Object){
             //besoin de coriger le style
             this.songPlay.pause()
-            this.currentTime = 0
+            this.songPlay.currentTime = 0
             this.playButtonEL.classList.remove('d-none')
             this.playButtonEL.style.visibility = 'visible'
             this.pauseButtonEL.classList.add('d-none')
