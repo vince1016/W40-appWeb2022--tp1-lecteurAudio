@@ -33,7 +33,8 @@ export default class InfoSongComponent{
             new CustomEvent('loadSongEvent', {
             detail: {
                 artist: this.artist,
-                song: this.song
+                song: this.song,
+                songFile: this.song.fileName
             }
           })
         )
