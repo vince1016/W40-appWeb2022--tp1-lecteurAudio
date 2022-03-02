@@ -36,6 +36,7 @@ export default class PlayerComponent{
         this.pauseButtonEL.addEventListener('click', event=>{
             this.isPlaying = false
             this.manageCurrentTime(this.isPlaying)
+            //event to block section of song when playing
         })
         this.stopButtonEL.addEventListener('click', event=>{
             this.isPlaying = false
