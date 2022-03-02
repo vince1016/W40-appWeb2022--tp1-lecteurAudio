@@ -10,6 +10,9 @@ export default class PlayerComponent{
         this.stopButtonEL = document.getElementById('btnStop')
         this.currentTimeEL = document.getElementById('currentTime')
         this.totalTimeEL = document.getElementById('duration')
+
+        this.songList = document.getElementById('songsList')
+
         this.artist = Object
         this.song = Object
         this.songPlay = Object
@@ -28,7 +31,7 @@ export default class PlayerComponent{
         this.playButtonEL.addEventListener('click', event=>{
             this.isPlaying = true
             this.manageCurrentTime(this.isPlaying)
-            //event to block se;ection of song when playing
+            //event to block section of song when playing
         })
         this.pauseButtonEL.addEventListener('click', event=>{
             this.isPlaying = false
@@ -79,40 +82,16 @@ export default class PlayerComponent{
         if (this.song != Object) {
             this.artistNameEL.textContent = this.artist.name 
             this.songNameEL.textContent = this.song.songName
-            this.currentTimeEL.textContent = this.convertCurrent(parseInt(this.songPlay.currentTime))
+            this.currentTimeEL.textContent = this.convert(parseInt(this.songPlay.currentTime))
             if(this.isPlaying){
-                this.totalTimeEL.textContent = this.convertDuration(parseInt(this.songPlay.duration))
+                this.totalTimeEL.textContent = this.convert(parseInt(this.songPlay.duration))
             }
         }
     }
 
-    //https://www.codegrepper.com/code-examples/javascript/convert+seconds+to+minutes+javascript
-    convertDuration(value) {
-        //+que 10 minutes
-        if(value >= 60*10){
-            return Math.floor(value / 60) + ":" + (value % 60 ? value % 60 : '00')
-        }
-        else{
-            return '0' + Math.floor(value / 60) + ":" + (value % 60 ? value % 60 : '00')
-        }
-        
-    }
-
-    //https://www.codegrepper.com/code-examples/javascript/convert+seconds+to+minutes+javascript
-    convertCurrent(value) {
-        if(value < 10){
-            return '0' + Math.floor(value / 60) + ":" + (value % 60 ? '0' + value % 60 : '00')
-        }
-        else{
-            //+que 10 minutes
-            if(value >= 60*10){
-                return Math.floor(value / 60) + ":" + (value % 60 ? '0' + value % 60 : '00')
-            }
-            else{
-                return '0' + Math.floor(value / 60) + ":" + (value % 60 ? value % 60 : '00')
-            }
-        }
-        
+    //https://stackoverflow.com/questions/1322732/convert-seconds-to-hh-mm-ss-with-javascript
+    convert(value) {
+        return new Date(value * 1000).toISOString().substr(14, 5)
     }
 
     displayError(){
