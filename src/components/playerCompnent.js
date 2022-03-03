@@ -27,12 +27,10 @@ export default class PlayerComponent{
         this.playButtonEL.addEventListener('click', event=>{
             this.isPlaying = true
             this.manageCurrentTime(this.isPlaying)
-            //event to block section of song when playing
         })
         this.pauseButtonEL.addEventListener('click', event=>{
             this.isPlaying = false
             this.manageCurrentTime(this.isPlaying)
-            //event to block section of song when playing
         })
         this.stopButtonEL.addEventListener('click', event=>{
             this.isPlaying = false
@@ -50,6 +48,7 @@ export default class PlayerComponent{
                 this.pauseButtonEL.classList.remove('d-none')
                 this.pauseButtonEL.style.visibility = 'visible'
                 this.songPlay.play()
+                //block section of song when playing
                 this.songListEL.classList.add('d-none')
                 this.songListEL.style.visibility = 'hidden'
             }
@@ -59,6 +58,7 @@ export default class PlayerComponent{
                 this.pauseButtonEL.classList.add('d-none')
                 this.pauseButtonEL.style.visibility = 'hidden'
                 this.songPlay.pause()
+                //unblock section of song when not playing
                 this.songListEL.classList.remove('d-none')
                 this.songListEL.style.visibility = 'visible'
             }
