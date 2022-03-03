@@ -11,13 +11,12 @@ export default class PlayerComponent{
         this.currentTimeEL = document.getElementById('currentTime')
         this.totalTimeEL = document.getElementById('duration')
 
-        this.songList = document.getElementById('songsList')
+        this.songListEL = document.getElementById('songsList')
 
         this.artist = Object
         this.song = Object
         this.songPlay = Object
         this.isPlaying = false
-        // require('chorus/names').into(global);
     }
 
     async initialize(){
@@ -26,7 +25,6 @@ export default class PlayerComponent{
             this.song = event.detail.song
             this.songPlay = new Audio('./songs/' + event.detail.songFile)
             this.renderDOM()
-            //set tot time
         })
         this.playButtonEL.addEventListener('click', event=>{
             this.isPlaying = true
@@ -54,6 +52,8 @@ export default class PlayerComponent{
                 this.pauseButtonEL.classList.remove('d-none')
                 this.pauseButtonEL.style.visibility = 'visible'
                 this.songPlay.play()
+                this.songListEL.classList.add('d-none')
+                this.songListEL.style.visibility = 'hidden'
             }
             else{
                 this.playButtonEL.classList.remove('d-none')
@@ -61,6 +61,8 @@ export default class PlayerComponent{
                 this.pauseButtonEL.classList.add('d-none')
                 this.pauseButtonEL.style.visibility = 'hidden'
                 this.songPlay.pause()
+                this.songListEL.classList.remove('d-none')
+                this.songListEL.style.visibility = 'visible'
             }
         }
         this.renderDOM()
@@ -75,6 +77,8 @@ export default class PlayerComponent{
             this.playButtonEL.style.visibility = 'visible'
             this.pauseButtonEL.classList.add('d-none')
             this.pauseButtonEL.style.visibility = 'hidden'
+            this.songListEL.classList.remove('d-none')
+            this.songListEL.style.visibility = 'visible'
             this.renderDOM()
         }
     }
