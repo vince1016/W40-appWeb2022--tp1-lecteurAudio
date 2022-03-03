@@ -19,46 +19,48 @@ beforeEach(()=>{
     `
 })
 
-test("songs are fetch at oppening", async ()=>{
-    
-    //arrenge
-    mockAxios.get.mockResolvedValue({data:songs})
-    const songsListComponent = new SongsListComponent()
-    const expectedSongs = songs.map(song => song.fileName)
+describe('test de songListComp', () => {
+    test("songs are fetch at oppening", async ()=>{
+        
+        //arrenge
+        mockAxios.get.mockResolvedValue({data:songs})
+        const songsListComponent = new SongsListComponent()
+        const expectedSongs = songs.map(song => song.fileName)
 
-    //act
-    await songsListComponent.initialize()
+        //act
+        await songsListComponent.initialize()
 
-    //assert
-    const elemsUL = Array.from(document.getElementsByTagName('li'))
-    const returnedSongs = elemsUL.map(songEL => songEL.innerHTML)
-    expect(returnedSongs).toEqual(expectedSongs)
-})
+        //assert
+        const elemsUL = Array.from(document.getElementsByTagName('li'))
+        const returnedSongs = elemsUL.map(songEL => songEL.innerHTML)
+        expect(returnedSongs).toEqual(expectedSongs)
+    })
 
-test("loading is not visible after dom render", async ()=>{
-    
-    //arrenge
-    mockAxios.get.mockResolvedValue({data:songs})
-    const songsListComponent = new SongsListComponent()
-    const expectedVisibility = 'hidden'
+    test("loading is not visible after dom render", async ()=>{
+        
+        //arrenge
+        mockAxios.get.mockResolvedValue({data:songs})
+        const songsListComponent = new SongsListComponent()
+        const expectedVisibility = 'hidden'
 
 
-    //act
-    await songsListComponent.initialize()
+        //act
+        await songsListComponent.initialize()
 
-    //assert
-    expect(expectedVisibility).toEqual(document.getElementById('loading-component-songs').style.visibility)
-})
+        //assert
+        expect(expectedVisibility).toEqual(document.getElementById('loading-component-songs').style.visibility)
+    })
 
-test("error when songs fetch dont work", async ()=>{
-    
-    //arrenge
-    mockAxios.get.mockRejectedValue({data:songs})
-    const songsListComponent = new SongsListComponent();
+    test("error when songs fetch dont work", async ()=>{
+        
+        //arrenge
+        mockAxios.get.mockRejectedValue({data:songs})
+        const songsListComponent = new SongsListComponent();
 
-    //act
-    await songsListComponent.initialize()
+        //act
+        await songsListComponent.initialize()
 
-    //assert
-    expect(mockToastr.error).toHaveBeenCalled()
+        //assert
+        expect(mockToastr.error).toHaveBeenCalled()
+    })
 })

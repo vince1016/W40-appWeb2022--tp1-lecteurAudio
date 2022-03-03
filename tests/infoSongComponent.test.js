@@ -15,7 +15,7 @@ jest.mock('toastr')
 const {data: songs} = songsJsonFake
 const {data: artists} = artistsJsonFake
 //const {data: songs} = songsJsonFake
-describe('infoSongs test', () => {
+describe('test de infoSongsComp', () => {
     beforeEach(()=>{
         jest.clearAllMocks()
         document.body.innerHTML=`
@@ -25,7 +25,7 @@ describe('infoSongs test', () => {
         `
     })
 
-    test("initialize fetch artists", async ()=>{
+    test("initialize va chercher les artistes", async ()=>{
         //arrenge
         mockAxios.get.mockResolvedValueOnce({data: artists})
         const infoSongComponent = new InfoSongComponent()
@@ -38,7 +38,7 @@ describe('infoSongs test', () => {
         expect(console.log).toEqual(expect.anything(), expectedLog)
     })
 
-    test("error when songs fetch dont work", async ()=>{
+    test("error quand les songs ne sont pas bien chercher", async ()=>{
         
         //arrenge
         mockAxios.get.mockRejectedValue({data:artists})
@@ -51,7 +51,7 @@ describe('infoSongs test', () => {
         expect(mockToastr.error).toHaveBeenCalled()
     })
 
-    test("select get artists with custom event", async ()=>{
+    test("select retourne les artistes avec un custom event", async ()=>{
         //arrenge
         mockAxios.get.mockResolvedValueOnce({data: artists})
         const infoSongComponent = new InfoSongComponent()

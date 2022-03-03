@@ -20,7 +20,7 @@ beforeEach(()=>{
     </p>
     `
 })
-describe('player test', () => {
+describe('test de playercomp', () => {
 
     
 test("À l'ouverture, la liste doit contenir des couleurs", () => {
