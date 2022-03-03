@@ -79,14 +79,18 @@ export default class PlayerComponent{
         }
     }
 
+    updateCurrentTime(){
+        setInterval(() => this.currentTimeEL.textContent = this.convert(parseInt(this.songPlay.currentTime))   , 1000);
+    }
+
     renderDOM(){
         if (this.song != Object) {
             this.artistNameEL.textContent = this.artist.name 
             this.songNameEL.textContent = this.song.songName
-            this.currentTimeEL.textContent = this.convert(parseInt(this.songPlay.currentTime))
             if(this.isPlaying){
                 this.totalTimeEL.textContent = this.convert(parseInt(this.songPlay.duration))
             }
+            this.updateCurrentTime()
         }
     }
 
