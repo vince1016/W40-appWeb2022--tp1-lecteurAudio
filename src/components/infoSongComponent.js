@@ -21,7 +21,7 @@ export default class InfoSongComponent{
         for (let i = 0; i < this.artists.length; i++) {
             if (parseInt(this.artists[i].id) == parseInt(idArt)) {
                 this.artist = this.artists[i];
-                await this.selectSong(idSong) //to refactor to pass song in event
+                await this.selectSong(idSong)
             }
         }
         this.renderDOM()
@@ -40,7 +40,6 @@ export default class InfoSongComponent{
         )
     }
 
-    //to refactor to pass song in event
     async selectSong(idSong){
         try{
             const { data } = await axios.get('http://localhost:3000/songs/' + idSong)

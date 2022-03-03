@@ -10,9 +10,7 @@ export default class PlayerComponent{
         this.stopButtonEL = document.getElementById('btnStop')
         this.currentTimeEL = document.getElementById('currentTime')
         this.totalTimeEL = document.getElementById('duration')
-
         this.songListEL = document.getElementById('songsList')
-
         this.artist = Object
         this.song = Object
         this.songPlay = Object
@@ -70,7 +68,6 @@ export default class PlayerComponent{
 
     resetTimer(){
         if(this.song != Object){
-            //besoin de coriger le style
             this.songPlay.pause()
             this.songPlay.currentTime = 0
             this.playButtonEL.classList.remove('d-none')
