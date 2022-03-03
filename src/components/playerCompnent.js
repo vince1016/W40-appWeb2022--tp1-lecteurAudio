@@ -47,7 +47,7 @@ export default class PlayerComponent{
                 this.playButtonEL.style.visibility = 'hidden'
                 this.pauseButtonEL.classList.remove('d-none')
                 this.pauseButtonEL.style.visibility = 'visible'
-                this.songPlay.play()
+                this.songPlay.oncanplay = this.songPlay.play()
                 //block section of song when playing
                 this.songListEL.classList.add('d-none')
                 this.songListEL.style.visibility = 'hidden'
